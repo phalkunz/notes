@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		
+		<title>Notes</title>
+		<link rel="stylesheet" href="css/screen.css" type="text/css" media="screen" />
+		<link href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/themes/base/jquery-ui.css" rel="stylesheet" type="text/css"/>
+		
+		<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+		<script src="javascript/jquery.min.js"></script>
+		<script src="javascript/jquery-ui.min.js"></script>
+		<script type="text/javascript" charset="utf-8" src="javascript/main.js"></script>
+		<script type="text/javascript" charset="utf-8" src="javascript/map.js"></script>
+	</head>
+	
+	<body>
+		<header>
+			<nav id="menu">
+				<ul class="horizontalList">
+					<li><a id="add-link" href="#" title="Add a note.">+</a></li>
+					<li><a class="disabled" id="undo-link" href="#" title="Recover a deleted note.">⟲</a></li>
+					<li><input type="text" id="search-text" name="search-text" placeholder="Search"/> <span><a href="#" id="clear-search">x Clear search</a></span></li>
+				</ul>
+			</nav>
+		</header>
+		
+		<div id="fullview-wrapper">
+			<div id="fullview">
+				<div id="map_canvas"></div>
+				<div class="actions"><a href="#">Done</a></div>
+			</div>
+		</div>
+
+		<section id="content">			
+			<ul id="notes">				
+			</ul>
+		</section>
+	</body>
+	
+</html>

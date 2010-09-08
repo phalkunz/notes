@@ -1,0 +1,93 @@
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, font, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td { margin: 0; padding: 0; border: 0; outline: 0; font-weight: inherit; font-style: inherit; font-size: 100%; font-family: inherit; vertical-align: baseline; }
+
+*:focus { outline: 0; }
+
+body { line-height: 1em; color: black; background: #fff; }
+
+ol, ul { list-style: none; }
+
+/* tables still need 'cellspacing="0"' in the markup */
+table { border-collapse: separate; border-spacing: 0; vertical-align: middle; }
+
+caption, th, td { text-align: left; font-weight: normal; vertical-align: middle; }
+
+q, blockquote { quotes: "" ""; }
+q:before, q:after, blockquote:before, blockquote:after { content: ""; }
+
+img a { border: none; }
+
+body { background-image: url(../images/body-bg2.png); font-family: Arial, sans-serif; }
+
+/* Generic classes */
+/* -------------------------------------------------------------- */
+a { color: #333; text-decoration: none; }
+
+.horizontalList { overflow: hidden; }
+.horizontalList li { float: left; margin-right: 2em; }
+
+.note ::-webkit-scrollbar { width: 5px; height: 5px; background: rgba(0, 0, 0, 0.1); border-radius: 3px; }
+.note ::-webkit-scrollbar-thumb { background: rgba(0, 0, 0, 0.1); border-radius: 3px; }
+
+a.tag { display: inline-block; background: #ddd; padding: 0 3px; border-radius: 2px; cursor: pointer; }
+a.tag:hover { background-color: #ccc; }
+
+/* Navigation */
+/* -------------------------------------------------------------- */
+nav#menu { overflow: hidden; position: fixed; z-index: 10000; left: 0; top: 0; right: 0; width: 100%; height: 36px; background-color: rgba(0,0,0,0.7); background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.1)), to(rgba(255,255,255,0))); -webkit-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3); padding: 0 2em; }
+nav#menu ul li { float: left; margin-right: 0; }
+nav#menu ul li a { display: block; padding: 10px 1.2em; height: 36px; color: #fff; font-weight: 600; text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.3); }
+nav#menu ul li a.disabled { color: rgba(255,255,255,0.3); }
+nav#menu ul li a:hover { background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0)), to(rgba(255,255,255,0.3))); }
+nav#menu ul li a#clear-search { display: none; padding-left: 0.2em; font-size: 12px; }
+nav#menu ul li a#clear-search:hover { background-image: none; color: #ccc; }
+nav#menu ul li a#undo-link { padding-top: 8px; font-size: 25px; }
+nav#menu input#search-text { margin-top: 7px; margin-left: 1.5em; padding: 4px 5px; border-radius: 5px; border: none; opacity: 0.9; color: #666; background-color: #eee; background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.3)), color-stop(0.3, rgba(0,0,0,0))); }
+
+/* Full view */
+/* -------------------------------------------------------------- */
+#fullview-wrapper { position: fixed; top: 0; z-index: 9998; background: rgba(0, 0, 0, 0.3); width: 10000px; height: 10000px; display: none; }
+#fullview-wrapper #fullview { position: fixed; top: -600px; z-index: 9999; margin: 0 auto; width: 1000px; height: 600px; background: url(../images/note-noise.png), #fff799 -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.1)), color-stop(0.99, rgba(255,255,255,0.1))); -webkit-box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.5); border-radius: 2px; overflow: hidden; -webkit-transition: top 2s ease-in-out; }
+#fullview-wrapper #fullview #map_canvas { position: absolute; right: -5px; top: 30px; width: 500px; height: 500px; border-radius: 2px; }
+#fullview-wrapper #fullview .actions { position: absolute; bottom: 15px; right: 30px; }
+#fullview-wrapper #fullview .actions a { display: block; padding: 5px 10px; background: #333; color: #fff; font-size: 12px; border-radius: 2px; }
+#fullview-wrapper.show #fullview { top: 30px; -webkit-transition: all 2s ease-in-out; }
+
+/* Content */
+/* -------------------------------------------------------------- */
+section#content { margin: 4em 2em; }
+section#content li.note { position: relative; font-size: 0.8em; float: left; width: 230px; height: 250px; margin: 1em 1em 0; -webkit-perspective: 800; -webkit-transition: opacity,-webkit-transform 0.3s ease-in-out; }
+section#content li.note.creating { opacity: 0.1; -webkit-transform: scale(1.6); -webkit-transition: all 1s ease-in-out; }
+section#content li.note img, section#content li.note video { max-width: 200px; }
+section#content li.note div.content-wrapper { position: relative; width: 230px; height: 210px; margin-bottom: 0.5em; font-family: "Helvetica-Nueue""Arial"; background: -webkit-gradient(linear, right bottom, left top, from(rgba(255, 255, 255, 0.9)), color-stop(0.06, rgba(255,255,255,0))), url(../images/note-noise.png), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), color-stop(0.5, rgba(255, 255, 255, 0))), #fff799; -webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); -webkit-transition: -webkit-box-shadow 0.2s ease-in-out; -webkit-mask-position: 0px 400px; -webkit-mask-repeat: x; }
+section#content li.note div.content-wrapper:hover, section#content li.note div.content-wrapper:focus, section#content li.note div.content-wrapper.focus { -webkit-box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2); -webkit-transition: -webkit-box-shadow 0.2s ease-in-out; }
+section#content li.note div.content-wrapper.flip { -webkit-transform: rotateY(180deg); -webkit-transition: -webkit-transform 1s ease-in-out; }
+section#content li.note div.content-wrapper.flip-back { -webkit-transform: rotateY(0deg); -webkit-transition: -webkit-transform 1s ease-in-out; }
+section#content li.note div.content-wrapper.deleting { -webkit-mask-image: url(../images/shredding-panel.png); -webkit-mask-position: 0px 1000px; -webkit-transition: -webkit-mask-position 2s ease-in-out; }
+section#content li.note div.content-wrapper.undeleting { -webkit-mask-position: 0px 400px; -webkit-transition: -webkit-mask-position 2s ease-in-out; }
+section#content li.note div.content-wrapper div.content, section#content li.note div.content-wrapper div.panel-settings { position: absolute; top: 10px; margin: 10px; overflow-x: hidden; width: 205px; height: 170px; padding-right: 5px; }
+section#content li.note div.content-wrapper.flipped { background: -webkit-gradient(linear, right bottom, left top, from(rgba(0, 0, 0, 0.1)), color-stop(0.06, rgba(0,0,0,0))), url(../images/note-noise.png), -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.05)), color-stop(0.5, rgba(0, 0, 0, 0))), #fff799; }
+section#content li.note div.content-wrapper.flipped div.content { opacity: 0.05; }
+section#content li.note div.content-wrapper.flipped div.panel-settings { display: block; }
+section#content li.note div.content-wrapper div.panel-settings { display: none; z-index: 100; right: 0; -webkit-transform: rotateY(180deg); }
+section#content li.note div.content-wrapper div.panel-settings p { margin: 1em 0; }
+section#content li.note div.content-wrapper div.panel-settings span.color { display: inline-block; width: 30px; height: 20px; margin-right: 12px; background: red; border-radius: 3px; -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); cursor: pointer; }
+section#content li.note div.content-wrapper div.panel-settings span.color.last { margin-right: 0; }
+section#content li.note div.content-wrapper div.panel-settings span.color:hover { -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); }
+section#content li.note div.content-wrapper div.panel-settings a.goback-link { background: rgba(0,0,0,0.6); color: #fff; border-radius: 2px; padding: 2px 5px; -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5); font-size: 0.9em; margin-top: 30px; margin-right: 6px; float: right; }
+section#content li.note div.content-wrapper div.panel-settings a.goback-link:hover { -webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6); }
+section#content li.note div.content-wrapper div.drag-handle { width: 160px; height: 12px; background: url(../images/dot.png); opacity: 0; cursor: move; -webkit-transition: opacity 0.5s ease-in-out; }
+section#content li.note div.content-wrapper:hover div.drag-handle { opacity: 0.15; -webkit-transition: opacity 0.5s ease-in-out; }
+section#content li.note.old .content-wrapper { background: url(../images/old-texture.png), -webkit-gradient(linear, right bottom, left top, from(rgba(255, 255, 255, 0.9)), color-stop(0.06, rgba(255,255,255,0))), url(../images/note-noise.png), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), color-stop(0.5, rgba(255, 255, 255, 0))), #fff799; }
+section#content li.note div.flag { display: none; position: absolute; width: 7px; height: 15px; top: -1px; right: 9px; background: url(../images/bookmark-with-shadow.png) no-repeat; z-index: 100; }
+section#content li.note.flagged div.flag { display: block; }
+section#content li.note p.actions { padding: 0 10px; font-size: 0.1em; }
+section#content li.note p.actions a { display: inline-block; opacity: 0; padding: 3px; -webkit-transition: opacity 0.2s ease-in-out; border-radius: 2px; width: 12px; height: 12px; overflow: hidden; line-height: 100px; }
+section#content li.note p.actions a:hover { background-color: #333; color: #ccc; }
+section#content li.note p.actions a.flag { background: url(../images/icons/star.png) no-repeat 50% 50%; }
+section#content li.note p.actions a.flag:hover { background-color: #333; background-image: url(../images/icons/star-hover.png); }
+section#content li.note p.actions a.delete { float: right; background: url(../images/icons/trash.png) no-repeat 50% 50%; }
+section#content li.note p.actions a.delete:hover { background-color: #333; background-image: url(../images/icons/trash-hover.png); }
+section#content li.note p.actions a.settings { background: url(../images/icons/cog.png) no-repeat 50% 50%; }
+section#content li.note p.actions a.settings:hover { background-color: #333; background-image: url(../images/icons/cog-hover.png); }
+section#content li.note.ui-sortable-helper p.actions { display: none; }
+section#content li.note:hover p.actions a { opacity: 1; -webkit-transition: opacity 0.5s ease-in-out; }

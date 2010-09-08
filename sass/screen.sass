@@ -1,0 +1,348 @@
+@import compass/reset.sass
+
+body
+	background-image: url(../images/body-bg2.png)
+	font-family: Arial, sans-serif
+	
+/* Generic classes 
+/* -------------------------------------------------------------- */
+a 
+	color: #333
+	text-decoration: none
+	
+.horizontalList
+	overflow: hidden
+	
+	li
+		float: left
+		margin-right: 2em
+
+.note		
+	::-webkit-scrollbar
+		width: 5px
+		height: 5px
+		background: rgba(0, 0, 0, 0.1)
+		border-radius: 3px
+		
+	::-webkit-scrollbar-thumb
+		background: rgba(0, 0, 0, 0.1)
+		border-radius: 3px
+
+a.tag 
+	display: inline-block
+	background: #ddd
+	padding: 0 3px
+	border-radius: 2px
+	cursor: pointer
+	
+	&:hover
+		background-color: #ccc
+		
+/* Navigation 
+/* -------------------------------------------------------------- */
+nav#menu
+	overflow: hidden
+	position: fixed
+	z-index: 10000
+	left: 0
+	top: 0
+	right: 0
+	width: 100%
+	height: 36px
+	background-color: rgba(0,0,0,0.7)
+	background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0.1)), to(rgba(255,255,255,0)))
+	-webkit-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.3)
+	padding: 0 2em
+	
+	ul
+		li 
+			float: left
+			margin-right: 0
+			
+			a
+				display: block
+				padding: 10px 1.2em
+				height: 36px
+				color: #fff
+				font-weight: 600
+				text-shadow: -1px -1px 0px rgba(0, 0, 0, 0.3)
+				
+				&.disabled 
+					color: rgba(255,255,255,0.3)
+					
+				&:hover
+					background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(255,255,255,0)), to(rgba(255,255,255,0.3)))
+					
+			a#clear-search 
+				display: none
+				padding-left: 0.2em
+				font-size: 12px
+				
+				&:hover
+					background-image: none
+					color: #ccc
+			
+			a#undo-link
+				padding-top: 8px
+				font-size: 25px
+	
+	input#search-text
+		margin-top: 7px
+		margin-left: 1.5em
+		padding: 4px 5px
+		border-radius: 5px
+		border: none
+		opacity: 0.9
+		color: #666
+		background-color: #eee
+		background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.3)), color-stop(0.3, rgba(0,0,0,0)))
+		
+/* Full view
+/* -------------------------------------------------------------- */
+#fullview-wrapper
+	position: fixed
+	top: 0
+	z-index: 9998
+	background: rgba(0, 0, 0, 0.3)
+	width: 10000px
+	height: 10000px
+	display: none
+
+	#fullview
+		position: fixed
+		top: -600px
+		z-index: 9999
+		margin: 0 auto
+		width: 1000px
+		height: 600px
+		background: url(../images/note-noise.png), #fff799 -webkit-gradient(linear, left top, left bottom, from(rgba(0,0,0,0.1)), color-stop(0.99, rgba(255,255,255,0.1)))
+		-webkit-box-shadow: 0px 10px 60px rgba(0, 0, 0, 0.5)
+		border-radius: 2px
+		overflow: hidden
+		-webkit-transition: top 2s ease-in-out			
+	
+		#map_canvas
+			position: absolute
+			right: -5px
+			top: 30px
+			width: 500px
+			height: 500px
+			border-radius: 2px
+		
+		.actions
+			position: absolute
+			bottom: 15px
+			right: 30px
+		
+			a
+				display: block
+				padding: 5px 10px
+				background: #333
+				color: #fff
+				font-size: 12px
+				border-radius: 2px
+	
+	&.show
+		#fullview 
+			top: 30px
+			-webkit-transition: all 2s ease-in-out			
+	
+/* Content
+/* -------------------------------------------------------------- */ 
+section#content
+	margin: 4em 2em
+	
+	li.note
+		position: relative
+		font-size: 0.8em
+		float: left
+		width: 230px
+		height: 250px
+		margin: 1em 1em 0
+		-webkit-perspective: 800
+		-webkit-transition: opacity,-webkit-transform 0.3s ease-in-out	
+		
+		&.creating
+			opacity: 0.1
+			-webkit-transform: scale(1.6)
+			-webkit-transition: all 1s ease-in-out	
+		
+		img, video
+			max-width: 200px
+		
+		div.content-wrapper
+			position: relative
+			width: 230px
+			height: 210px
+			margin-bottom: 0.5em
+			font-family: "Helvetica-Nueue""Arial"
+			
+			background: -webkit-gradient(linear, right bottom, left top, from(rgba(255, 255, 255, 0.9)), color-stop(0.06, rgba(255,255,255,0))), url(../images/note-noise.png), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), color-stop(0.5, rgba(255, 255, 255, 0))), #fff799
+			
+			-webkit-box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1)
+			-webkit-transition: -webkit-box-shadow 0.2s ease-in-out			
+			
+			-webkit-mask-position: 0px 400px
+			-webkit-mask-repeat: x
+					
+			&:hover, &:focus, &.focus
+				-webkit-box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.2)
+				-webkit-transition: -webkit-box-shadow 0.2s ease-in-out
+				
+			&.flip
+				-webkit-transform: rotateY(180deg)
+				-webkit-transition: -webkit-transform 1s ease-in-out
+				
+			&.flip-back
+				-webkit-transform: rotateY(0deg)
+				-webkit-transition: -webkit-transform 1s ease-in-out
+				
+			&.deleting
+				-webkit-mask-image: url(../images/shredding-panel.png)
+				-webkit-mask-position: 0px 1000px
+				-webkit-transition: -webkit-mask-position 2s ease-in-out
+				
+			&.undeleting
+				-webkit-mask-position: 0px 400px
+				-webkit-transition: -webkit-mask-position 2s ease-in-out
+			
+			div.content, div.panel-settings
+				position: absolute
+				top: 10px
+				margin: 10px
+				overflow-x: hidden
+				width: 205px
+				height: 170px
+				padding-right: 5px
+				
+			&.flipped
+				background: -webkit-gradient(linear, right bottom, left top, from(rgba(0, 0, 0, 0.1)), color-stop(0.06, rgba(0,0,0,0))), url(../images/note-noise.png), -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.05)), color-stop(0.5, rgba(0, 0, 0, 0))), #fff799
+				
+				div.content
+					opacity: 0.05
+				
+				div.panel-settings
+					display: block
+			
+			div.panel-settings
+				display: none
+				z-index: 100
+				right: 0
+				-webkit-transform: rotateY(180deg)
+				
+				p
+					margin: 1em 0
+				
+				span.color
+					display: inline-block
+					width: 30px
+					height: 20px
+					margin-right: 12px
+					background: red
+					border-radius: 3px
+					-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)
+					cursor: pointer
+					
+					&.last
+						margin-right: 0
+					
+					&:hover
+						-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6)
+				
+				a.goback-link
+					background: rgba(0,0,0,0.6)
+					color: #fff
+					border-radius: 2px
+					padding: 2px 5px
+					-webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5)
+					font-size: 0.9em
+					margin-top: 30px
+					margin-right: 6px
+					float: right
+					
+					&:hover
+						-webkit-box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.6)
+			
+			div.drag-handle
+				width: 160px
+				height: 12px
+				background: url(../images/dot.png)
+				opacity: 0
+				cursor: move
+				-webkit-transition: opacity 0.5s ease-in-out
+				
+			&:hover
+				div.drag-handle
+					opacity: 0.15
+					-webkit-transition: opacity 0.5s ease-in-out
+					
+		&.old .content-wrapper
+			background: url(../images/old-texture.png), -webkit-gradient(linear, right bottom, left top, from(rgba(255, 255, 255, 0.9)), color-stop(0.06, rgba(255,255,255,0))), url(../images/note-noise.png), -webkit-gradient(linear, left top, left bottom, from(rgba(255, 255, 255, 0.5)), color-stop(0.5, rgba(255, 255, 255, 0))), #fff799
+					
+		div.flag
+			display: none
+			position: absolute
+			width: 7px
+			height: 15px
+			top: -1px
+			right: 9px
+			background: url(../images/bookmark-with-shadow.png) no-repeat
+			z-index: 100
+
+		&.flagged div.flag 
+			display: block
+			
+		p.actions
+			padding: 0 10px
+			font-size: 0.1em
+			
+			a
+				display: inline-block
+				opacity: 0
+				padding: 3px
+				-webkit-transition: opacity 0.2s ease-in-out
+				border-radius: 2px
+				width: 12px
+				height: 12px
+				overflow: hidden
+				line-height: 100px
+				
+				&:hover
+					background-color: #333
+					color: #ccc
+				
+				&.flag
+					background: url(../images/icons/star.png) no-repeat 50% 50% 
+					
+				&.flag:hover
+					background-color: #333
+					background-image: url(../images/icons/star-hover.png)
+					
+				&.delete
+					float: right
+					background: url(../images/icons/trash.png) no-repeat 50% 50%
+					
+				&.delete:hover
+					background-color: #333
+					background-image: url(../images/icons/trash-hover.png)
+					
+				&.settings 
+					background: url(../images/icons/cog.png) no-repeat 50% 50%
+					
+				&.settings:hover
+					background-color: #333
+					background-image: url(../images/icons/cog-hover.png)
+					
+					
+		&.ui-sortable-helper
+			p.actions
+				display: none
+				
+		&:hover
+			p.actions a
+				opacity: 1
+				-webkit-transition: opacity 0.5s ease-in-out
+			
+
+	
+			
