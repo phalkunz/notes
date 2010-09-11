@@ -5,6 +5,9 @@ As the name implies, the app is for note taking. It was designed to require less
 
 You can find the demo here [http://phalkunz.github.com/demo/stickynotes/](http://phalkunz.github.com/demo/notes/). You need *Safari* or at least *Chrome* browser. 
 
+![HTML5 Notes App](http://farm5.static.flickr.com/4111/4977970151_ecb2907e18_z.jpg)
+
+
 # Browser Compatibilities:
 - Safari 
 - Google Chrome (doesn't support full visual effects)
