@@ -3,7 +3,7 @@ This app was written for [SilverStripe HTML5 Jedi Challenge](http://silverstripe
 
 As the name implies, the app is for note taking. It was designed to require less keystrokes, less mouse movements, less input fields, thus less hassles. Just a reminder, this app was *not* intended to be fully working but rather a proof of concept and a demonstration of some of the HTML5 and CSS3 features. 
 
-You can find the demo here [http://phalkunz.github.com/demo/stickynotes/](http://phalkunz.github.com/demo/notes/). You need *Safari* or at least *Chrome* browser. 
+You can find the demo here [http://phalkunz.github.com/demo/notes/](http://phalkunz.github.com/demo/notes/). You need *Safari* or at least *Chrome* browser. 
 
 ![HTML5 Notes App](http://farm5.static.flickr.com/4111/4977970151_ecb2907e18_z.jpg)
 
