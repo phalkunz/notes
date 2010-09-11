@@ -1,4 +1,4 @@
-# Note App
+# Notes App
 This app was written for [SilverStripe HTML5 Jedi Challenge](http://silverstripe.com/blog/html5-jedi-arena-shaping-the-web-of-the-future/) and it won a trophy and a PlayStation 3. 
 
 As the name implies, the app is for note taking. It was designed to require less keystrokes, less mouse movements, less input fields, thus less hassles. Just a reminder, this app was *not* intended to be fully working but rather a proof of concept and a demonstration of some of the HTML5 and CSS3 features. 
